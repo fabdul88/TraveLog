@@ -1,45 +1,37 @@
 const express = require("express");
 const morgan = require("morgan");
 const helmet = require("helmet");
-const cors = require("cors");
 const mongoose = require("mongoose");
-const path = require("path");
-
-require("dotenv").config();
 
 // Requiring middlewares from the middlewares.js export
+const cors = require("cors");
 const middlewares = require("./middlewares");
 
 const logs = require("./api/logs");
 
 const app = express();
 
-// process.env.DATABASE_URL
+// Body parser
+app.use(express.json());
+
+require("dotenv").config();
+
 mongoose
-  .connect("mongodb://localhost/travel-log", {
+  .connect(process.env.ATLAS_URI, {
     useNewUrlParser: true,
-    // useCreateIndex: true,
+    useCreateIndex: true,
     useUnifiedTopology: true,
   })
   .catch((err) => console.log(err));
 
-// const db = mongoose.connection;
-// db.on("error", console.error.bind(console, "connection error:"));
-// db.once("open", function () {
-//   // we're connected!
-// });
+mongoose.connection.once("open", () => {
+  console.log("mongoDB connection successful");
+});
 
 app.use(morgan("common"));
 // securing app by preventing hackers from knowing what headers are being used.
 app.use(helmet());
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN,
-  })
-);
-
-// Body parser
-app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.json({
@@ -56,7 +48,7 @@ app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
 // Server port
-const port = process.env.PORT || 8080;
-app.listen(port, () => {
-  console.log(`listening at http://localhost:${port}`);
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`listening at http://localhost:${PORT}`);
 });

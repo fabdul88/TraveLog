@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-const { Schema } = mongoose;
+const mongoose = require("mongoose");
 
 // storing schema objects in variables
 const requiredNumber = {
@@ -7,7 +6,7 @@ const requiredNumber = {
   required: true,
 };
 
-const logEntrySchema = new Schema(
+const logEntrySchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -42,5 +41,4 @@ const logEntrySchema = new Schema(
   }
 );
 
-const LogEntry = mongoose.model("LogEntry", logEntrySchema);
-module.exports = LogEntry;
+module.exports = mongoose.model("LogEntry", logEntrySchema);
