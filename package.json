@@ -1,0 +1,27 @@
+{
+  "name": "travel-log-app",
+  "version": "1.0.0",
+  "description": "MERN TRAVEL LOG APP",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "lint": "eslint src/"
+  },
+  "author": "Abdul",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.3.1",
+    "mongoose": "^5.11.9",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.6"
+  }
+}
