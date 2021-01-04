@@ -3,6 +3,7 @@ const { Router } = require("express");
 const router = Router();
 const LogEntry = require("../model/LogEntry");
 
+// get all travel entries
 router.get("/", async (req, res, next) => {
   try {
     const entries = await LogEntry.find();
@@ -12,6 +13,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// post travel entry
 router.post("/", async (req, res, next) => {
   try {
     const logEntry = new LogEntry(req.body);
@@ -25,44 +27,32 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-// router.post("/:id", async (req, res, next) => {
-//   try {
-//     LogEntry.findById(req.params.id);
-//     const logUpdate = await LogEntry.then((logentry) => {
-//       logentry.title = req.body.title;
-//       logentry.description = req.body.description;
-//       logentry.comments = req.body.comments;
-//       logentry.image = req.body.image;
-//       logentry.rating = req.body.rating;
-//       logentry.latitude = req.body.latitude;
-//       logentry.longitude = req.body.longitude;
-//       logentry.visitDate = req.body.visitDate;
-//     });
+// update logged entry
+router.post("/:id", async (req, res) => {
+  await LogEntry.findById(req.params.id)
+    .then((entry) => {
+      entry.title = req.body.title;
+      entry.description = req.body.description;
+      entry.comments = req.body.comments;
+      entry.image = req.body.image;
+      entry.rating = req.body.rating;
+      entry.latitude = req.body.latitude;
+      entry.longitude = req.body.longitude;
+      entry.visitDate = req.body.visitDate;
 
-//     const updatedLog = await logUpdate.save();
-//     res.json(updatedLog);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
-router.post("/:id", (req, res, next) => {
-  LogEntry.findById(req.params.id)
-    .then((logentry) => {
-      logentry.title = req.body.title;
-      logentry.description = req.body.description;
-      logentry.comments = req.body.comments;
-      logentry.image = req.body.image;
-      logentry.rating = req.body.rating;
-      logentry.latitude = req.body.latitude;
-      logentry.longitude = req.body.longitude;
-      logentry.visitDate = req.body.visitDate;
-
-      logentry
+      entry
         .save()
         .then(res.json("updated"))
         .catch((err) => res.status(400).json(err));
     })
     .catch((err) => res.status(400).json(err));
 });
+
+// delete logged entry
+router.delete("/:id", async (req, res) => {
+  await LogEntry.findByIdAndDelete(req.params.id)
+    .then(() => res.json("deleted"))
+    .catch((err) => res.status(400).json(err));
+});
+
 module.exports = router;
