@@ -1,0 +1,43 @@
+@import "../../styles/partials/global.scss";
+.map {
+  // width: 100vw;
+  // display: flex;
+  justify-content: center;
+  &__pin {
+    transform: translate(-50% -100%);
+    width: 24px;
+    height: 24px;
+    &-red {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__info {
+    &-container {
+      max-width: 300px;
+    }
+    &-heading {
+      font-family: "RalewaySB";
+
+      margin: 10px;
+    }
+    &-description {
+      font-family: "RalewayR";
+      margin: 10px;
+    }
+    &-comment {
+      margin: 10px;
+    }
+    &-visited {
+      font-family: "RalewayT";
+      margin: 10px;
+    }
+    &-image-container {
+      margin: 10px;
+    }
+  }
+  &__new-info-heading {
+    margin: 10px;
+  }
+}

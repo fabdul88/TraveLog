@@ -1,0 +1,16 @@
+@import "./styles//partials/global.scss";
+* {
+  font-family: "RalewayR";
+  margin: 0;
+  padding: 0;
+  // overflow: hidden;
+}
+// .mapboxgl-popup-content {
+//   background-color: rgba(0, 0, 0, 0.5);
+//   // color: azure;
+//   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.9);
+// }
+
+.mapboxgl-popup-close-button {
+  padding: 10px;
+}
