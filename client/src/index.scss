@@ -13,4 +13,19 @@
 
 .mapboxgl-popup-close-button {
   padding: 10px;
+  color: azure;
+}
+
+div.mapboxgl-popup-content {
+  width: 320px;
+  background: rgba(0, 0, 0, 0.6);
+  color: azure;
+  // filter: drop-shadow(0.4rem 0.6rem 0.1rem rgba(0, 0, 0, 0.8));
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  // box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.8);
+  &:hover {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+    transition: ease-in-out 0.5s;
+    cursor: text;
+  }
 }

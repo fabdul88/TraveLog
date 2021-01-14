@@ -1,0 +1,59 @@
+@import "../../styles/partials/global.scss";
+
+.entry-form-container {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+    &-title-container,
+    &-description-container,
+    &-comments-container,
+    &-image-container,
+    &-visit-container {
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0;
+    }
+  }
+  &__title-input,
+  &__description-textarea,
+  &__comments-textarea,
+  &__image-input,
+  &__visitdate-input {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 4px;
+    color: azure;
+    &:focus,
+    &:hover {
+      box-shadow: 0 0 10px azure;
+      outline: azure;
+    }
+  }
+  &__button-container {
+    display: flex;
+    justify-content: center;
+  }
+  &__button {
+    background: rgb(0, 0, 0);
+    opacity: 0.4;
+    color: azure;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    text-align: center;
+    &:hover {
+      cursor: pointer;
+      border: none;
+      outline: azure;
+      background: azure;
+      color: red;
+      box-shadow: 0 0 20px azure;
+    }
+  }
+  &__error {
+    color: red;
+  }
+}

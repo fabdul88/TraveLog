@@ -37,7 +37,19 @@
       margin: 10px;
     }
   }
-  &__new-info-heading {
-    margin: 10px;
+  &__popup {
+    padding: 40px 0 0 40px;
+  }
+  &__image {
+    width: 300px;
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 4px;
+  }
+  &__hr {
+    margin: 20px 0 20px 10px;
+    width: 200px;
+    align-self: center;
   }
 }

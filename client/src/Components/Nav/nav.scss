@@ -1,0 +1,41 @@
+.nav-container {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  &__sub {
+    display: flex;
+    justify-content: center;
+  }
+  &__nav {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+  }
+  &__logo {
+    &-link {
+      text-decoration: none;
+      color: black;
+      &:hover {
+        cursor: pointer;
+        color: red;
+      }
+    }
+  }
+  &__list {
+    display: flex;
+    list-style-type: none;
+    &-item {
+      margin: 0 20px;
+      font-size: 21px;
+      &-link {
+        text-decoration: none;
+        color: white;
+        &:hover {
+          cursor: pointer;
+          color: red;
+        }
+      }
+    }
+  }
+}

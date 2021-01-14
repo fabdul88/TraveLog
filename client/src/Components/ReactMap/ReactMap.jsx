@@ -3,6 +3,7 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { listLogEntries } from "./api";
 import MapPin from "../../assets/icons/map-pin.svg";
 import MapPinRed from "../../assets/icons/map-pin-red.svg";
+import LogEntryForm from "../LogEntryForm/logEntryForm";
 import "./reactMap.scss";
 
 const ReactMap = () => {
@@ -17,11 +18,13 @@ const ReactMap = () => {
     zoom: 8,
   });
 
+  const getEntries = async () => {
+    const logEntries = await listLogEntries();
+    setLogEntries(logEntries);
+  };
+
   useEffect(() => {
-    (async () => {
-      const logEntries = await listLogEntries();
-      setLogEntries(logEntries);
-    })();
+    getEntries();
   }, []);
 
   const showAddMarkerPopup = (event) => {
@@ -82,10 +85,18 @@ const ReactMap = () => {
               >
                 <div className="map__info-container">
                   <h3 className="map__info-heading">{entry.title}</h3>
+                  <hr className="map__hr" />
                   <p className="map__info-description">{entry.description}</p>
+                  <hr className="map__hr" />
                   <p className="map__info-comment">{entry.comments}</p>
                   <div className="map__info-image-container">
-                    <img src={entry.image} alt="Travel visual upload" />
+                    {entry.image && (
+                      <img
+                        className="map__image"
+                        src={entry.image}
+                        alt={entry.title}
+                      />
+                    )}
                   </div>
                   <small className="map__info-visited">
                     Visited on: {new Date(entry.visitDate).toLocaleDateString()}
@@ -126,9 +137,13 @@ const ReactMap = () => {
               anchor="top"
             >
               <div className="map__new-info-container">
-                <h3 className="map__new-info-heading">
-                  add your new log entry
-                </h3>
+                <LogEntryForm
+                  onClose={() => {
+                    setAddEntryLocation(null);
+                    getEntries();
+                  }}
+                  location={addEntryLocation}
+                />
                 <form action=""></form>
               </div>
             </Popup>
