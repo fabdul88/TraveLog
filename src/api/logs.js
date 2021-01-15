@@ -1,7 +1,10 @@
 const { Router } = require("express");
 
-const router = Router();
 const LogEntry = require("../model/LogEntry");
+
+const { API_KEY } = process.env;
+
+const router = Router();
 
 // get all travel entries
 router.get("/", async (req, res, next) => {
@@ -16,6 +19,10 @@ router.get("/", async (req, res, next) => {
 // post travel entry
 router.post("/", async (req, res, next) => {
   try {
+    if (req.get("x-api-key") !== API_KEY) {
+      res.status(401);
+      throw new Error("UnAuthorized");
+    }
     const logEntry = new LogEntry(req.body);
     const createdEntry = await logEntry.save();
     res.json(createdEntry);

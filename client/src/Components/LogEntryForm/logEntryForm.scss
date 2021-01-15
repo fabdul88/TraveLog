@@ -9,7 +9,8 @@
     &-description-container,
     &-comments-container,
     &-image-container,
-    &-visit-container {
+    &-visit-container,
+    &-API-container {
       display: flex;
       flex-direction: column;
       margin: 10px 0;
@@ -19,7 +20,8 @@
   &__description-textarea,
   &__comments-textarea,
   &__image-input,
-  &__visitdate-input {
+  &__visitdate-input,
+  &__API-input {
     padding: 10px;
     background: rgba(0, 0, 0, 0.1);
     border: none;
@@ -34,6 +36,7 @@
   &__button-container {
     display: flex;
     justify-content: center;
+    opacity: 0.4;
   }
   &__button {
     background: rgb(0, 0, 0);

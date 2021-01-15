@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 // Requiring middlewares from the middlewares.js export
 const cors = require("cors");
@@ -13,8 +14,6 @@ const app = express();
 
 // Body parser
 app.use(express.json());
-
-require("dotenv").config();
 
 mongoose
   .connect(process.env.ATLAS_URI, {
@@ -46,15 +45,6 @@ app.use("/api/logs", logs);
 app.use(middlewares.notFound);
 // Error handling middleware
 app.use(middlewares.errorHandler);
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-
-  const path = require("path");
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
 
 // Server port
 const PORT = process.env.PORT || 8080;

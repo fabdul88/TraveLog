@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./logEntryForm.scss";
 import { createLogEntry } from "../ReactMap/api";
+import { motion } from "framer-motion";
 
 const LogEntryForm = ({ location, onClose }) => {
+  const transition = {
+    duration: 0.8,
+    ease: [0.43, 0.13, 0.23, 0.96],
+  };
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const { register, handleSubmit } = useForm();
@@ -30,6 +36,17 @@ const LogEntryForm = ({ location, onClose }) => {
       >
         <div className="entry-form-container__error">
           {error ? <h3>{error}</h3> : null}
+        </div>
+        <div className="entry-form-container__form-API-container">
+          <label htmlFor="apiKey">API</label>
+          <input
+            className="entry-form-container__API-input"
+            type="password"
+            name="apiKey"
+            required
+            placeholder="API Key here..."
+            ref={register}
+          />
         </div>
         <div className="entry-form-container__form-title-container">
           <label htmlFor="title">Title</label>
@@ -81,9 +98,16 @@ const LogEntryForm = ({ location, onClose }) => {
           />
         </div>
         <div className="entry-form-container__button-container">
-          <button className="entry-form-container__button" disabled={loading}>
+          <motion.button
+            className="entry-form-container__button"
+            disabled={loading}
+            initial={{ opacity: 0, x: "-10vw" }}
+            animate={{ opacity: 1, x: "0" }}
+            exit={{ opacity: 0, x: "-10vw" }}
+            transition={transition}
+          >
             {loading ? "Loading..." : "create Log Entry !"}
-          </button>
+          </motion.button>
         </div>
       </form>
     </div>
