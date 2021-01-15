@@ -46,6 +46,17 @@ app.use(middlewares.notFound);
 // Error handling middleware
 app.use(middlewares.errorHandler);
 
+// deployment
+if (process.env.NODE_ENV === "production") {
+  // set static folder
+  const path = require("path");
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./client", "build", "index.html"));
+  });
+}
+
 // Server port
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

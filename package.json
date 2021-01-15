@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "MERN TRAVEL LOG APP",
   "main": "src/server.js",
+  "engines": {
+    "node": "14.10.1",
+    "npm": "6.14.8"
+  },
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
