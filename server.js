@@ -32,11 +32,11 @@ app.use(morgan("common"));
 app.use(helmet());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.json({
-    message: "hello world!",
-  });
-});
+// app.get("/", (req, res) => {
+//   res.json({
+//     message: "hello world!",
+//   });
+// });
 
 app.use("/api/logs", logs);
 
