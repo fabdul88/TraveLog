@@ -6,7 +6,7 @@ require("dotenv").config();
 
 // Requiring middlewares from the middlewares.js export
 const cors = require("cors");
-const middlewares = require("./middlewares");
+// const middlewares = require("./middlewares");
 
 const logs = require("./api/logs");
 
@@ -40,11 +40,11 @@ app.use(cors());
 
 app.use("/api/logs", logs);
 
-// Middlewares
-// Not found middleware
-app.use(middlewares.notFound);
-// Error handling middleware
-app.use(middlewares.errorHandler);
+// // Middlewares
+// // Not found middleware
+// app.use(middlewares.notFound);
+// // Error handling middleware
+// app.use(middlewares.errorHandler);
 
 // deployment
 if (process.env.NODE_ENV === "production") {
