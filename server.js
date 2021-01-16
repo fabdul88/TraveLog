@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-const helmet = require("helmet");
+// const helmet = require("helmet");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
@@ -29,7 +29,7 @@ mongoose.connection.once("open", () => {
 
 app.use(morgan("common"));
 // securing app by preventing hackers from knowing what headers are being used.
-app.use(helmet());
+// app.use(helmet());
 app.use(cors());
 
 // app.get("/", (req, res) => {
