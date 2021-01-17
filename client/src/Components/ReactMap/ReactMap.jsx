@@ -42,7 +42,10 @@ const ReactMap = () => {
         {...viewport}
         // Setting map theme from mapbox
         mapStyle="mapbox://styles/fabdul/ckjkhw1k417as19ru2az37koe"
-        mapboxApiAccessToken={process.env.REACT_MAPBOX_TOKEN}
+        // mapboxApiAccessToken={process.env.REACT_MAPBOX_TOKEN}
+        mapboxApiAccessToken={
+          "pk.eyJ1IjoiZmFiZHVsIiwiYSI6ImNrazBnbXY2bDBjdHgycHFpOThyNXp4c3gifQ.2ZvAk6GN52T1eNvojspIGg"
+        }
         onViewportChange={setViewport}
         onDblClick={showAddMarkerPopup}
       >
