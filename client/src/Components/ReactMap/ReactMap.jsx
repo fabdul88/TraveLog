@@ -36,13 +36,14 @@ const ReactMap = () => {
   };
 
   const MAP = process.env.REACT_APP_MAPBOX_TOKEN;
+  const MAP_STYLE = process.env.REACT_APP_MAP_STYLE;
   return (
     <div className="map">
       <ReactMapGL
         className="map__react-gl"
         {...viewport}
         // Setting map theme from mapbox
-        mapStyle={"mapbox://styles/fabdul/ckjj8jmau08xd19og0ila5us9"}
+        mapStyle={MAP_STYLE}
         // mapbox Api Access Token
         mapboxApiAccessToken={MAP}
         // mapboxApiAccessToken={
