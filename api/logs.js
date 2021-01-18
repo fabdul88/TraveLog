@@ -2,7 +2,7 @@ const { Router } = require("express");
 
 const LogEntry = require("../model/LogEntry");
 
-const { API_KEY } = process.env;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const router = Router();
 
@@ -19,8 +19,8 @@ router.get("/", async (req, res, next) => {
 // post travel entry
 router.post("/", async (req, res, next) => {
   try {
-    // if (req.get("x-api-key") !== API_KEY) {
-    if (req.get("x-api-key") !== "test") {
+    if (req.get("x-api-key") !== API_KEY) {
+      // if (req.get("x-api-key") !== "test") {
       res.status(401);
       throw new Error("UnAuthorized");
     }
