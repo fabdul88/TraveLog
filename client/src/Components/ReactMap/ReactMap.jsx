@@ -42,7 +42,7 @@ const ReactMap = () => {
         {...viewport}
         // Setting map theme from mapbox
         mapStyle={"mapbox://styles/fabdul/ckjkhw1k417as19ru2az37koe"}
-        // mapboxApiAccessToken
+        // mapbox Api Access Token
         mapboxApiAccessToken={
           "pk.eyJ1IjoiZmFiZHVsIiwiYSI6ImNrazBnbXY2bDBjdHgycHFpOThyNXp4c3gifQ.2ZvAk6GN52T1eNvojspIGg"
         }
