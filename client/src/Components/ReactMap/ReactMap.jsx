@@ -35,6 +35,7 @@ const ReactMap = () => {
     });
   };
 
+  const MAP = process.env.REACT_APP_MAPBOX_TOKEN;
   return (
     <div className="map">
       <ReactMapGL
@@ -43,10 +44,10 @@ const ReactMap = () => {
         // Setting map theme from mapbox
         mapStyle={"mapbox://styles/fabdul/ckjj8jmau08xd19og0ila5us9"}
         // mapbox Api Access Token
-        // mapboxApiAccessToken={process.env.REACT_MAPBOX_TOKEN}
-        mapboxApiAccessToken={
-          "pk.eyJ1IjoiZmFiZHVsIiwiYSI6ImNrazBnbXY2bDBjdHgycHFpOThyNXp4c3gifQ.2ZvAk6GN52T1eNvojspIGg"
-        }
+        mapboxApiAccessToken={MAP}
+        // mapboxApiAccessToken={
+        //   "pk.eyJ1IjoiZmFiZHVsIiwiYSI6ImNrazBnbXY2bDBjdHgycHFpOThyNXp4c3gifQ.2ZvAk6GN52T1eNvojspIGg"
+        // }
         onViewportChange={setViewport}
         onDblClick={showAddMarkerPopup}
       >
