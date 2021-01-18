@@ -2,12 +2,15 @@ const express = require("express");
 const morgan = require("morgan");
 // const helmet = require("helmet");
 const mongoose = require("mongoose");
-require("dotenv").config();
+
+// const dotenv = require("dotenv");
+// dotenv.config();
 
 // Requiring middlewares from the middlewares.js export
 const cors = require("cors");
 // const middlewares = require("./middlewares");
 
+require("dotenv").config();
 const logs = require("./api/logs");
 
 const app = express();
