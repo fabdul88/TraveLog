@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { listLogEntries } from "./api";
-import MapPin from "../../assets/icons/map-pin.svg";
-import MapPinRed from "../../assets/icons/map-pin-red.svg";
+import MapPin from "../../assets/icons/map-pin1.svg";
+import MapPinRed from "../../assets/icons/map-pin-red1.svg";
 import LogEntryForm from "../LogEntryForm/logEntryForm";
 import "./reactMap.scss";
 

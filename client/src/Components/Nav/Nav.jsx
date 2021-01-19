@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./nav.scss";
+import logo from "../../assets/icons/logo.svg";
 
 export default function Nav() {
   return (
@@ -9,11 +10,14 @@ export default function Nav() {
         <nav className="nav-container__nav">
           <div className="nav-container__logo-container">
             <Link className="nav-container__logo-link" to="/">
-              <p className="nav-container__logo">logo</p>
+              <img className="nav-container__logo" src={logo} alt="logo"></img>
             </Link>
           </div>
           <div className="nav-container__menu-container">
-            <ul className="nav-container__list">
+            <ul
+              className="nav-container__list
+                 nav-container__list-hide"
+            >
               <Link className="nav-container__list-item-link" to="/">
                 <li className="nav-container__list-item">Home</li>
               </Link>

@@ -1,5 +1,9 @@
 .nav-container {
-  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 80px;
   display: flex;
   align-items: center;
   &__sub {
@@ -7,12 +11,19 @@
     justify-content: center;
   }
   &__nav {
-    background-color: transparent;
+    backdrop-filter: blur(1px);
+    // background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     width: 100vw;
   }
+  &__logo-container {
+    margin: 10px 20px 0 20px;
+  }
   &__logo {
+    width: 70px;
+    height: auto;
     &-link {
       text-decoration: none;
       color: black;
@@ -25,9 +36,13 @@
   &__list {
     display: flex;
     list-style-type: none;
+    // &-hide {
+    //   display: none;
+    // }
     &-item {
       margin: 0 20px;
       font-size: 21px;
+
       &-link {
         text-decoration: none;
         color: white;
@@ -37,5 +52,10 @@
         }
       }
     }
+  }
+  &__menu-container {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
   }
 }
