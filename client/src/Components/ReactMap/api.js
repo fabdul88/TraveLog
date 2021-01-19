@@ -1,5 +1,3 @@
-// const API_URL = "http://localhost:8080";
-
 export async function listLogEntries() {
   const response = await fetch(`/api/logs`);
   return response.json();
