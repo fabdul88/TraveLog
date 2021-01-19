@@ -43,7 +43,7 @@ const ReactMap = () => {
         className="map__react-gl"
         {...viewport}
         // Setting map theme from mapbox
-        // mapStyle={MAP_STYLE}
+        mapStyle={MAP_STYLE}
         // mapbox Api Access Token
         mapboxApiAccessToken={MAP}
         onViewportChange={setViewport}
