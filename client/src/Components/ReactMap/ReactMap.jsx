@@ -46,20 +46,12 @@ const ReactMap = () => {
         mapStyle={MAP_STYLE}
         // mapbox Api Access Token
         mapboxApiAccessToken={MAP}
-        // mapboxApiAccessToken={
-        //   "pk.eyJ1IjoiZmFiZHVsIiwiYSI6ImNrazBnbXY2bDBjdHgycHFpOThyNXp4c3gifQ.2ZvAk6GN52T1eNvojspIGg"
-        // }
         onViewportChange={setViewport}
         onDblClick={showAddMarkerPopup}
       >
         {logEntries.map((entry) => (
           <div key={entry._id}>
-            <Marker
-              latitude={entry.latitude}
-              longitude={entry.longitude}
-              // offsetLeft={-20}
-              // offSetTop={-10}
-            >
+            <Marker latitude={entry.latitude} longitude={entry.longitude}>
               <div
                 onClick={() =>
                   setShowPopup({
@@ -117,8 +109,6 @@ const ReactMap = () => {
             <Marker
               latitude={addEntryLocation.latitude}
               longitude={addEntryLocation.longitude}
-              // offsetLeft={-20}
-              // offSetTop={-10}
             >
               <div>
                 <img
