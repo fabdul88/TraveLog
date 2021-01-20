@@ -16,9 +16,21 @@
   justify-content: center;
   align-items: center;
   &__title {
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    margin: 10px;
+    font-size: 65px;
     color: blanchedalmond;
+    filter: drop-shadow(2px 4px 6px black);
   }
   &__title-description {
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    margin: 10px;
+    font-size: 30px;
     color: blanchedalmond;
+    filter: drop-shadow(2px 4px 6px black);
   }
 }

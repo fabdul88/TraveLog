@@ -24,6 +24,7 @@
   &__logo {
     width: 70px;
     height: auto;
+    filter: drop-shadow(2px 4px 6px black);
     &-link {
       text-decoration: none;
       color: black;
@@ -40,6 +41,7 @@
     //   display: none;
     // }
     &-item {
+      filter: drop-shadow(2px 4px 6px black);
       margin: 0 20px;
       font-size: 21px;
 

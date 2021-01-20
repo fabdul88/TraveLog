@@ -38,13 +38,13 @@ const LogEntryForm = ({ location, onClose }) => {
           {error ? <h3>{error}</h3> : null}
         </div>
         <div className="entry-form-container__form-API-container">
-          <label htmlFor="apiKey">API</label>
+          <label htmlFor="apiKey">Authorization Code</label>
           <input
             className="entry-form-container__API-input"
             type="password"
             name="apiKey"
             required
-            placeholder="API Key here..."
+            placeholder="Authorization code here..."
             ref={register}
           />
         </div>
