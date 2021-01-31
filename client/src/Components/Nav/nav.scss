@@ -12,7 +12,6 @@
   }
   &__nav {
     backdrop-filter: blur(1px);
-    // background-color: transparent;
     background-color: rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
@@ -37,9 +36,6 @@
   &__list {
     display: flex;
     list-style-type: none;
-    // &-hide {
-    //   display: none;
-    // }
     &-item {
       filter: drop-shadow(2px 4px 6px black);
       margin: 0 20px;

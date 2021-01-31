@@ -20,10 +20,7 @@ export default function Nav() {
             </Link>
           </div>
           <div className="nav-container__menu-container">
-            <ul
-              className="nav-container__list
-                 nav-container__list-hide"
-            >
+            <ul className="nav-container__list">
               <motion.li
                 className="nav-container__list-item"
                 whileHover={{ scale: 1.1 }}
