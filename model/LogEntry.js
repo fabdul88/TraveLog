@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-// storing schema objects in variables
+// storing schema object in variable
 const requiredNumber = {
   type: Number,
   required: true,

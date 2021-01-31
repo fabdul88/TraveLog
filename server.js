@@ -1,11 +1,9 @@
 const express = require("express");
 const morgan = require("morgan");
-// const helmet = require("helmet");
 const mongoose = require("mongoose");
 
-// Requiring middlewares from the middlewares.js export
+// Middleware
 const cors = require("cors");
-// const middlewares = require("./middlewares");
 
 require("dotenv").config();
 const logs = require("./api/logs");
@@ -15,6 +13,7 @@ const app = express();
 // Body parser
 app.use(express.json());
 
+// MongoDB Connection
 mongoose
   .connect(process.env.ATLAS_URI, {
     useNewUrlParser: true,
@@ -28,23 +27,9 @@ mongoose.connection.once("open", () => {
 });
 
 app.use(morgan("common"));
-// securing app by preventing hackers from knowing what headers are being used.
-// app.use(helmet());
 app.use(cors());
 
-// app.get("/", (req, res) => {
-//   res.json({
-//     message: "hello world!",
-//   });
-// });
-
 app.use("/api/logs", logs);
-
-// // Middlewares
-// // Not found middleware
-// app.use(middlewares.notFound);
-// // Error handling middleware
-// app.use(middlewares.errorHandler);
 
 // deployment
 if (process.env.NODE_ENV === "production") {
