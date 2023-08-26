@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import "./logEntryForm.scss";
-import { createLogEntry } from "../ReactMap/api";
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import './logEntryForm.scss';
+import { createLogEntry } from '../ReactMap/api';
+import { motion } from 'framer-motion';
 
 const LogEntryForm = ({ location, onClose }) => {
   const transition = {
@@ -11,7 +11,7 @@ const LogEntryForm = ({ location, onClose }) => {
   };
 
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
@@ -19,13 +19,12 @@ const LogEntryForm = ({ location, onClose }) => {
       setLoading(true);
       data.latitude = location.latitude;
       data.longitude = location.longitude;
-      const created = await createLogEntry(data);
-      console.log(created);
+      await createLogEntry(data);
       onClose();
     } catch (error) {
-      console.log(error);
       setError(error.message);
       setLoading(false);
+      throw new Error(error);
     }
   };
   return (
@@ -45,7 +44,7 @@ const LogEntryForm = ({ location, onClose }) => {
             name="apiKey"
             required
             placeholder="Authorization code here..."
-            ref={register}
+            {...register('apiKey', { required: true })}
           />
         </div>
         <div className="entry-form-container__form-title-container">
@@ -55,7 +54,7 @@ const LogEntryForm = ({ location, onClose }) => {
             name="title"
             required
             placeholder="Travel Location"
-            ref={register}
+            {...register('title')}
           />
         </div>
         <div className="entry-form-container__form-description-container">
@@ -65,7 +64,7 @@ const LogEntryForm = ({ location, onClose }) => {
             name="description"
             rows={3}
             placeholder="Description of the Location"
-            ref={register}
+            {...register('description')}
           ></textarea>
         </div>
         <div className="entry-form-container__form-comments-container">
@@ -75,7 +74,7 @@ const LogEntryForm = ({ location, onClose }) => {
             name="comments"
             rows={3}
             placeholder="Type comment here..."
-            ref={register}
+            {...register('comments')}
           ></textarea>
         </div>
         <div className="entry-form-container__form-image-container">
@@ -84,7 +83,16 @@ const LogEntryForm = ({ location, onClose }) => {
             className="entry-form-container__image-input"
             name="image"
             placeholder="Place image here..."
-            ref={register}
+            {...register('image')}
+          />
+        </div>
+        <div className="entry-form-container__form-image-container">
+          <label htmlFor="rating">Rating</label>
+          <input
+            className="entry-form-container__image-input"
+            name="rating"
+            placeholder="Rating out of 10"
+            {...register('rating')}
           />
         </div>
         <div className="entry-form-container__form-visit-container">
@@ -94,19 +102,19 @@ const LogEntryForm = ({ location, onClose }) => {
             name="visitDate"
             type="date"
             required
-            ref={register}
+            {...register('visitDate')}
           />
         </div>
         <div className="entry-form-container__button-container">
           <motion.button
             className="entry-form-container__button"
             disabled={loading}
-            initial={{ opacity: 0, x: "-10vw" }}
-            animate={{ opacity: 1, x: "0" }}
-            exit={{ opacity: 0, x: "-10vw" }}
+            initial={{ opacity: 0, x: '-10vw' }}
+            animate={{ opacity: 1, x: '0' }}
+            exit={{ opacity: 0, x: '-10vw' }}
             transition={transition}
           >
-            {loading ? "Loading..." : "create Log Entry !"}
+            {loading ? 'Loading...' : 'create Log Entry !'}
           </motion.button>
         </div>
       </form>

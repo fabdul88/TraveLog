@@ -1,58 +1,11 @@
-@import "../../styles/partials/global.scss";
+@import '../../styles/partials/global.scss';
 .map {
   justify-content: center;
-  &__pin {
-    transform: translate(-50% -100%);
+  &__pin-red {
     width: 24px;
     height: 24px;
-    &-red {
-      width: 24px;
-      height: 24px;
-    }
-  }
-
-  &__info {
-    &-container {
-      max-width: 300px;
-    }
-    &-heading {
-      font-family: "RalewaySB";
-
-      margin: 10px;
-    }
-    &-description {
-      font-family: "RalewayR";
-      margin: 10px;
-    }
-    &-comment {
-      margin: 10px;
-    }
-    &-visited {
-      font-family: "RalewayT";
-      margin: 10px;
-    }
-    &-image-container {
-      margin: 10px;
-    }
   }
   &__popup {
     padding: 40px 0 0 40px;
-  }
-  &__image {
-    width: 280px;
-    height: auto;
-    text-align: center;
-    margin: 0 auto;
-    border-radius: 4px;
-  }
-  &__hr {
-    height: 1px;
-    border: 0;
-    width: 30%;
-    display: flex;
-    text-align: center;
-    background-color: #2c3e50;
-    margin: 20px 0 20px 10px;
-    align-self: center;
   }
 }

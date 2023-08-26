@@ -1,10 +1,11 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import "./nav.scss";
-import logo from "../../assets/icons/logo.svg";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
+import './nav.scss';
+import logo from '../../assets/icons/logo.svg';
 
 export default function Nav() {
+  const location = useLocation();
   return (
     <div className="nav-container">
       <div className="nav-container__sub">
@@ -25,7 +26,14 @@ export default function Nav() {
                 className="nav-container__list-item"
                 whileHover={{ scale: 1.1 }}
               >
-                <Link className="nav-container__list-item-link" to="/">
+                <Link
+                  className={
+                    location.pathname === '/'
+                      ? 'nav-container__list-item-link--active'
+                      : 'nav-container__list-item-link'
+                  }
+                  to="/"
+                >
                   Home
                 </Link>
               </motion.li>
@@ -33,7 +41,14 @@ export default function Nav() {
                 className="nav-container__list-item"
                 whileHover={{ scale: 1.1 }}
               >
-                <Link className="nav-container__list-item-link" to="/map">
+                <Link
+                  className={
+                    location.pathname === '/map'
+                      ? 'nav-container__list-item-link--active'
+                      : 'nav-container__list-item-link'
+                  }
+                  to="/map"
+                >
                   Map
                 </Link>
               </motion.li>

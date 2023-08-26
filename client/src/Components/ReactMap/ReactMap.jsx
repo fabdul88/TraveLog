@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import { listLogEntries } from "./api";
-import MapPin from "../../assets/icons/map-pin1.svg";
-import MapPinRed from "../../assets/icons/map-pin-red1.svg";
-import LogEntryForm from "../LogEntryForm/logEntryForm";
-import "./reactMap.scss";
+import React, { useState, useEffect } from 'react';
+import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import { listLogEntries } from './api';
+import MapPinRed from '../../assets/icons/map-pin-red1.svg';
+import LogEntryForm from '../LogEntryForm/logEntryForm';
+import LogEntry from '../LogEntry/LogEntry';
+import './reactMap.scss';
 
 const ReactMap = () => {
   const [logEntries, setLogEntries] = useState([]);
   const [showPopup, setShowPopup] = useState({});
   const [addEntryLocation, setAddEntryLocation] = useState(null);
   const [viewport, setViewport] = useState({
-    width: "100vw",
-    height: "100vh",
+    width: '100vw',
+    height: '100vh',
     latitude: 49.246292,
     longitude: -123.116226,
     zoom: 8,
@@ -28,10 +28,9 @@ const ReactMap = () => {
   }, []);
 
   const showAddMarkerPopup = (event) => {
-    const [longitude, latitude] = event.lngLat;
     setAddEntryLocation({
-      longitude,
-      latitude,
+      longitude: event.lngLat[0],
+      latitude: event.lngLat[1],
     });
   };
 
@@ -49,61 +48,17 @@ const ReactMap = () => {
         onViewportChange={setViewport}
         onDblClick={showAddMarkerPopup}
       >
-        {logEntries.map((entry) => (
-          <div key={entry._id}>
-            <Marker latitude={entry.latitude} longitude={entry.longitude}>
-              <div
-                onClick={() =>
-                  setShowPopup({
-                    [entry._id]: true,
-                  })
-                }
-              >
-                <img
-                  className="map__pin"
-                  style={{
-                    width: `${4 * viewport.zoom}px`,
-                    height: `${4 * viewport.zoom}px`,
-                  }}
-                  src={MapPin}
-                  alt="Map Pin"
-                />
-              </div>
-            </Marker>
-            {showPopup[entry._id] ? (
-              <Popup
-                className="map__popup"
-                latitude={entry.latitude}
-                longitude={entry.longitude}
-                dynamicPosition={true}
-                closeButton={true}
-                closeOnClick={false}
-                onClose={() => setShowPopup({})}
-                anchor="top"
-              >
-                <div className="map__info-container">
-                  <h3 className="map__info-heading">{entry.title}</h3>
-                  <hr className="map__hr" />
-                  <p className="map__info-description">{entry.description}</p>
-                  <hr className="map__hr" />
-                  <p className="map__info-comment">{entry.comments}</p>
-                  <div className="map__info-image-container">
-                    {entry.image && (
-                      <img
-                        className="map__image"
-                        src={entry.image}
-                        alt={entry.title}
-                      />
-                    )}
-                  </div>
-                  <small className="map__info-visited">
-                    Visited on: {new Date(entry.visitDate).toLocaleDateString()}
-                  </small>
-                </div>
-              </Popup>
-            ) : null}
-          </div>
-        ))}
+        <LogEntry
+          logEntries={logEntries}
+          showPopup={showPopup}
+          setShowPopup={setShowPopup}
+          viewport={viewport}
+          location={addEntryLocation}
+          onClose={() => {
+            setAddEntryLocation(null);
+            getEntries();
+          }}
+        />
         {addEntryLocation ? (
           <div>
             <Marker
@@ -140,7 +95,6 @@ const ReactMap = () => {
                   }}
                   location={addEntryLocation}
                 />
-                <form action=""></form>
               </div>
             </Popup>
           </div>

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 // storing schema object in variable
 const requiredNumber = {
@@ -38,7 +38,7 @@ const logEntrySchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-module.exports = mongoose.model("LogEntry", logEntrySchema);
+module.exports = mongoose.model('LogEntry', logEntrySchema);

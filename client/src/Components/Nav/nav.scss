@@ -48,6 +48,14 @@
           cursor: pointer;
           color: red;
         }
+        &--active {
+          color: red;
+          text-decoration: none;
+          &:hover {
+            cursor: pointer;
+            color: red;
+          }
+        }
       }
     }
   }
