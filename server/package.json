@@ -4,13 +4,8 @@
   "description": "MERN TRAVEL LOG APP",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
-    "build": "cd client && npm run build",
-    "install-client": "cd client && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build",
     "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "cd client && npm start"
+    "dev": "nodemon server.js"
   },
   "author": "Abdul",
   "license": "MIT",

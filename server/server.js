@@ -24,21 +24,21 @@ app.use('/api/editLogEntry', logsRouter);
 app.use('/api/deleteLogEntry', logsRouter);
 
 // deployment
-if (process.env.NODE_ENV === 'production') {
-  const __dirname = path.resolve();
-  app.use(express.static(path.join(__dirname, './client/build')));
+// if (process.env.NODE_ENV === 'production') {
+//   const __dirname = path.resolve();
+//   app.use(express.static(path.join(__dirname, './client/build')));
 
-  app.get('*', (req, res) => {
-    res.sendFile(
-      path.join(__dirname, './client/build/index.html'),
-      function (err) {
-        res.status(500).send(err);
-      }
-    );
-  });
-} else {
-  app.get('/', (req, res) => res.send('server is ready'));
-}
+//   app.get('*', (req, res) => {
+//     res.sendFile(
+//       path.join(__dirname, './client/build/index.html'),
+//       function (err) {
+//         res.status(500).send(err);
+//       }
+//     );
+//   });
+// } else {
+//   app.get('/', (req, res) => res.send('server is ready'));
+// }
 // Server port
 const PORT = process.env.PORT || 8080;
 
