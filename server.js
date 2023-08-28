@@ -16,7 +16,11 @@ const app = express();
 app.use(express.json());
 
 app.use(morgan('common'));
-app.use(cors());
+app.use(
+  cors({
+    origin: ['https://travel-log-mern.vercel.app/map', 'http://localhost:3000'],
+  })
+);
 
 app.use('/api/listLogEntries', logsRouter);
 app.use('/api/postLogEntry', logsRouter);
