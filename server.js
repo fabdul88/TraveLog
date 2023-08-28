@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(morgan('common'));
 app.use(
   cors({
-    origin: ['https://travel-log-mern.vercel.app/map', 'http://localhost:3000'],
+    origin: ['https://travel-log-mern.vercel.app', 'http://localhost:3000'],
   })
 );
 
