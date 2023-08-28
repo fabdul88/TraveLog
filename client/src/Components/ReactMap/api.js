@@ -1,5 +1,7 @@
+const url = window.origin;
+
 export async function listLogEntries() {
-  const response = await fetch(`/api/listLogEntries`);
+  const response = await fetch(`${url}/api/listLogEntries`);
   return response.json();
 }
 
@@ -7,7 +9,7 @@ export async function createLogEntry(entry) {
   const apiKey = entry.apiKey;
   delete entry.apiKey;
 
-  const response = await fetch(`/api/postLogEntry`, {
+  const response = await fetch(`${url}/api/postLogEntry`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -25,7 +27,7 @@ export async function createLogEntry(entry) {
 }
 
 export async function editLogEntry(entry) {
-  const response = await fetch(`/api/postLogEntry/${entry._id}`, {
+  const response = await fetch(`${url}/api/postLogEntry/${entry._id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json',
@@ -43,7 +45,7 @@ export async function editLogEntry(entry) {
 }
 
 export async function deleteLogEntry(entry) {
-  const response = await fetch(`/api/deleteLogEntry/${entry._id}`, {
+  const response = await fetch(`${url}/api/deleteLogEntry/${entry._id}`, {
     method: 'DELETE',
     headers: {
       'content-type': 'application/json',
