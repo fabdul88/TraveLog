@@ -14,7 +14,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: ['https://travel-log-mern.vercel.app', 'http://localhost:3000'],
+    origin: [
+      'https://travel-log-api-seven.vercel.app',
+      'http://localhost:3000',
+    ],
   })
 );
 // Body parser
