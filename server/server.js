@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
-const path = require('path');
+// const path = require('path');
 
 // Middleware
 const cors = require('cors');
@@ -12,20 +12,20 @@ const logsRouter = require('./routes/logRoutes');
 
 const app = express();
 
-// Body parser
-app.use(express.json());
-
-app.use(morgan('common'));
 app.use(
   cors({
     origin: ['https://travel-log-mern.vercel.app', 'http://localhost:3000'],
   })
 );
+// Body parser
+app.use(express.json());
 
-app.use('https://travel-log-mern.vercel.app/api/listLogEntries', logsRouter);
-app.use('https://travel-log-mern.vercel.app/api/postLogEntry', logsRouter);
-app.use('https://travel-log-mern.vercel.app/api/editLogEntry', logsRouter);
-app.use('https://travel-log-mern.vercel.app/api/deleteLogEntry', logsRouter);
+app.use(morgan('common'));
+
+app.use('/api/listLogEntries', logsRouter);
+app.use('/api/postLogEntry', logsRouter);
+app.use('/api/editLogEntry', logsRouter);
+app.use('/api/deleteLogEntry', logsRouter);
 
 // deployment
 // if (process.env.NODE_ENV === 'production') {
@@ -43,6 +43,20 @@ app.use('https://travel-log-mern.vercel.app/api/deleteLogEntry', logsRouter);
 // } else {
 //   app.get('/', (req, res) => res.send('server is ready'));
 // }
+if (process.env.NODE_ENV === 'production') {
+  const path = require('path');
+  app.use(express.static(path.resolve(__dirname, 'client', 'build')));
+  app.get('*', (req, res) => {
+    res.sendFile(
+      path.resolve(__dirname, 'client', 'build', 'index.html'),
+      function (err) {
+        if (err) {
+          res.status(500).send(err);
+        }
+      }
+    );
+  });
+}
 // Server port
 const PORT = process.env.PORT || 8080;
 
