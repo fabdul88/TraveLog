@@ -6,7 +6,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/server.js"
+      "destination": "https://travel-log-mern.vercel.app/*"
     }
   ]
 }
