@@ -1,5 +1,5 @@
 // const url = window.origin;
-const url = 'https://travel-log-api-seven.vercel.app';
+const url = 'https://travel-log-api-psi.vercel.app';
 
 export async function listLogEntries() {
   const response = await fetch(`${url}/api/listLogEntries`);
