@@ -22,10 +22,10 @@ app.use(
   })
 );
 
-app.use('/api/listLogEntries', logsRouter);
-app.use('/api/postLogEntry', logsRouter);
-app.use('/api/editLogEntry', logsRouter);
-app.use('/api/deleteLogEntry', logsRouter);
+app.use('https://travel-log-mern.vercel.app/api/listLogEntries', logsRouter);
+app.use('https://travel-log-mern.vercel.app/api/postLogEntry', logsRouter);
+app.use('https://travel-log-mern.vercel.app/api/editLogEntry', logsRouter);
+app.use('https://travel-log-mern.vercel.app/api/deleteLogEntry', logsRouter);
 
 // deployment
 // if (process.env.NODE_ENV === 'production') {
