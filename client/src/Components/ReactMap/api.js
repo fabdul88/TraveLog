@@ -1,4 +1,5 @@
-const url = window.origin;
+// const url = window.origin;
+const url = 'https://travel-log-api-fabdul88.vercel.app';
 
 export async function listLogEntries() {
   const response = await fetch(`${url}/api/listLogEntries`);
