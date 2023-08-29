@@ -12,11 +12,7 @@ const logsRouter = require('./routes/logRoutes');
 
 const app = express();
 
-app.use(
-  cors({
-    origin: ['https://travel-log-mern.vercel.app', 'http://localhost:3000'],
-  })
-);
+app.use(cors());
 // Body parser
 app.use(express.json());
 
